@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!--================ Начало банера =================-->
+    {% include 'include/baner.html' %}
+    <!--================ Конец =================-->
+    <section class="blog-post-area section-gap relative">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-12 col-md-12">
+              	{% for article in articles %}
+	                <div class="single-amenities">
+	                  <div class="amenities-thumb">
+	                    <img
+	                      class="img-fluid w-100"
+	                      src="{{article.image.url}}"
+	                      alt=""
+	                    />
+	                  </div>
+	                  <div class="amenities-details">
+	                    <h5>
+	                      <a href="{{article.get_absolute_url}}"
+	                        >{{article.title}}
+	                      </a>
+	                    </h5>
+	                    <div class="amenities-meta mb-10">
+	                      <a href="{{article.get_absolute_url}}" class=""
+	                        ><span class="ti-calendar"></span>{{article.published|safe}}</a
+	                      >
+	                      <a href="{{article.get_absolute_url}}" class="ml-20"
+	                        ><span class="ti-comment"></span>05</a
+	                      >
+	                    </div>
+	                    <p>
+	                      {{article.content|safe}}
+	                    </p>
+
+	                    <div class="d-flex justify-content-between mt-20">
+	                      <div>
+	                        <a href="{{article.get_absolute_url}}" class="blog-post-btn">
+	                          Читать <span class="ti-arrow-right"></span>
+	                        </a>
+	                      </div>
+	                      <div class="category">
+	                        <a href="blog-single.html">
+	                          <span class="ti-folder mr-1"></span> {{article.category.name}}
+	                        </a>
+	                      </div>
+	                    </div>
+	                  </div>
+	                </div>
+            	{% endfor %}
+            	</div>
+        	</div>
+            <div class="row">
+              <div class="col-lg-12">
+                  <nav class="blog-pagination justify-content-center d-flex">
+                    {% if articles.has_other_pages %}
+                      <ul class="pagination">
+                        {% if articles.has_previous %}
+                          <li class="page-item">
+                              <a href="?page={{ articles.previous_page_number }}" class="page-link" aria-label="Previous">
+                                  <span aria-hidden="false">
+                                      <span class="ti-arrow-left"></span>
+                                  </span>
+                              </a>
+                          </li>
+                          {% endif %}
+                          {% for i in articles.paginator.page_range %}
+                            {% if articles.number == i %}
+                              <li class="page-item active"><a href="#" class="page-link">{{i}}</a></li>
+                            {% else %}
+                              <li class="page-item"><a href="?page={{i}}" class="page-link">{{i}}</a></li>
+                            {% endif %}
+                          {% endfor %}
+                          {% if articles.has_next %}
+                            <li>
+                              <a href="?page={{ articles.next_page_number }}" class="page-link" aria-label="Next">
+                                  <span aria-hidden="false">
+                                      <span class="ti-arrow-right"></span>
+                                  </span>
+                              </a>
+                          </li>
+                          {% endif %}
+                      </ul>
+                      {% endif %}
+                  </nav>
+              </div>
+            </div>
+          </div>
+          {% include 'include/sidebar.html' %}
+        </div>
+      </div>
+    </section>
+{% endblock %}

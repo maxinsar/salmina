@@ -1,0 +1,54 @@
+<!-- Start Blog Post Siddebar -->
+          <div class="col-lg-4 sidebar-widgets">
+              <div class="widget-wrap">
+                <div class="single-sidebar-widget search-widget">
+                  <form class="search-form" action="#">
+                    <input placeholder="Поиск по сайту" name="search" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Posts'">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                  </form>
+                </div>
+
+                <div class="single-sidebar-widget instafeed-widget">
+                  <h4 class="instafeed-title">Instagram</h4>
+                  <ul class="instafeed d-flex flex-wrap">
+                    <li><img src="img/blog/instagram/i1.jpg" alt=""></li>
+                    <li><img src="img/blog/instagram/i2.jpg" alt=""></li>
+                    <li><img src="img/blog/instagram/i3.jpg" alt=""></li>
+                    <li><img src="img/blog/instagram/i4.jpg" alt=""></li>
+                    <li><img src="img/blog/instagram/i5.jpg" alt=""></li>
+                    <li><img src="img/blog/instagram/i6.jpg" alt=""></li>
+                  </ul>
+                </div>
+
+                <div class="single-sidebar-widget post-category-widget sidebar-widgets">
+                  <h4 class="category-title">Категории</h4>
+                  <ul class="cat-list mt-20">
+                    {% for category in category_list %}
+                    <li>
+                      <a href="{{category.get_absolute_url}}" class="d-flex justify-content-between">
+                        <p>{{category.name}}</p>
+                        <p>59</p>
+                      </a>
+                    </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+                  <div class="single-sidebar-widget share-widget">
+                    <h4 class="share-title">Я в соц. сетях</h4>
+                    <div class="social-icons mt-20">
+                      <a href="#">
+                        <span class="ti-facebook"></span>
+                      </a>
+                      <a href="#">
+                        <span class="ti-twitter"></span>
+                      </a>
+                      <a href="#">
+                        <span class="ti-pinterest"></span>
+                      </a>
+                      <a href="#">
+                        <span class="ti-instagram"></span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="banner-area relative">
+      <div class="overlay overlay-bg"></div>
+      <div class="banner-content text-center">
+        <h1>{{page.name}}</h1>
+      </div>
+    </section>
+    <!--================ End banner Area =================-->
+
+    <!-- Start contact-page Area -->
+    <section class="sample-text-area">
+		<div class="container">
+			<h3 class="text-heading">{{page.title}}</h3>
+			<p class="sample-text">
+				{{page.content|safe}}
+			</p>
+		</div>
+	</section>
+{% endblock %}

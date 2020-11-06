@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<div class="section-top-border">
+        <h3>Image Gallery</h3>
+        <div class="row gallery-item">
+          {% for photo in photos %}
+            <div class="col-md-4">
+              <a href="{{photo.image.url}}" class="img-gal">
+                <div class="single-gallery-image" style="background: url({{photo.image.url}});"></div>
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+{% endblock %}
